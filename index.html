@@ -108,77 +108,96 @@
 
     <!--Thank You-->
     <script>
+        //Global variable's
+        const positive = 1;
+        const negative = -1;
+        const firstClass = 150;
+        const economyClass = 100;
         //First class booking area
         //event handler for positive button in first class
         document.getElementById('first-class-positive').addEventListener('click', function(){
-            const FirstClassInitialValue = parseFloat(document.getElementById('first-class-input').value);
-            const finalTicketAmount = FirstClassInitialValue + 1;
+            const finalTicketAmount = ticketCounter('first-class-input', positive);
             document.getElementById('first-class-input').value = finalTicketAmount;
-            //counter ended
-            //subtotal area
-            const initialSubTotal = parseInt(document.getElementById('subTotal').innerText);
-            const finalSubTotal = initialSubTotal + 150;
+            const finalSubTotal = subTotalCalculator('subTotal', firstClass, positive);
             document.getElementById('subTotal').innerText = finalSubTotal;
-            //vat area
-            const finalVat = (finalSubTotal / 100) * 10;
+            const finalVat = vatCalculator('vat', finalSubTotal);
             document.getElementById('vat').innerText = finalVat;
-            //grand total area
-            document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+            // document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+            grandTotal('grandTotal', finalSubTotal, finalVat);
 
         })
         //event handler for first class negative button
         document.getElementById('first-class-negative').addEventListener('click', function(){
-            const FirstClassInitialValue = parseFloat(document.getElementById('first-class-input').value);
-            const finalTicketAmount = FirstClassInitialValue - 1;
+            const finalTicketAmount = ticketCounter('first-class-input', negative);
             document.getElementById('first-class-input').value = finalTicketAmount;
-            //counter ended
-            //subtotal area
-            const initialSubTotal = parseInt(document.getElementById('subTotal').innerText);
-            const finalSubTotal = initialSubTotal - 150;
+            const finalSubTotal = subTotalCalculator('subTotal', firstClass, negative);
             document.getElementById('subTotal').innerText = finalSubTotal;
-            //vat area
-            const finalVat = (finalSubTotal / 100) * 10;
+            const finalVat = vatCalculator('vat', finalSubTotal);
             document.getElementById('vat').innerText = finalVat;
-            //grand total area
-            document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+            // document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+            grandTotal('grandTotal', finalSubTotal, finalVat);
         })
 
         //Economy class booking area
         //event handler for economy class positive button
         document.getElementById('economy-class-positive').addEventListener('click', function(){
-            const economyClassInitialValue = parseFloat(document.getElementById('economy-class-input').value);
-            const finalTicketAmount = economyClassInitialValue + 1;
+            const finalTicketAmount = ticketCounter('economy-class-input', positive)
             document.getElementById('economy-class-input').value = finalTicketAmount;
-            //counter ended
-            //subtotal area
-            const initialSubTotal = parseInt(document.getElementById('subTotal').innerText);
-            const finalSubTotal = initialSubTotal + 100;
+            const finalSubTotal = subTotalCalculator('subTotal', economyClass, positive);
             document.getElementById('subTotal').innerText = finalSubTotal;
-            //vat area
-            const finalVat = (finalSubTotal / 100) * 10;
+            const finalVat = vatCalculator('vat', finalSubTotal);
             document.getElementById('vat').innerText = finalVat;
-            //grand total area
-            document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+            // document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+            grandTotal('grandTotal', finalSubTotal, finalVat);
         })
         //event handler for economy class negative button
         document.getElementById('economy-class-negative').addEventListener('click', function(){
-            const economyClassInitialValue = parseFloat(document.getElementById('economy-class-input').value);
-            const finalTicketAmount = economyClassInitialValue - 1;
+            const finalTicketAmount = ticketCounter('economy-class-input', negative);
             document.getElementById('economy-class-input').value = finalTicketAmount;
-            //counter ended
-            //subtotal area
-            const initialSubTotal = parseInt(document.getElementById('subTotal').innerText);
-            const finalSubTotal = initialSubTotal - 100;
+            const finalSubTotal = subTotalCalculator('subTotal', economyClass, negative);
             document.getElementById('subTotal').innerText = finalSubTotal;
-            //vat area
-            const finalVat = (finalSubTotal / 100) * 10;
+            const finalVat = vatCalculator('vat', finalSubTotal);
             document.getElementById('vat').innerText = finalVat;
-            //grand total area
-            document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+            // document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+            grandTotal('grandTotal', finalSubTotal, finalVat);
         })
 
         //This area contains all functions
+        //counter function
+        function ticketCounter(id, sign) {
+            const FirstClassInitialValue = parseFloat(document.getElementById(id).value);
+            const finalTicketAmount = FirstClassInitialValue + sign;
+            return finalTicketAmount;
+        }
 
+
+        //subtotal function
+        function subTotalCalculator(id, whichClass, sign) {
+            if (sign === positive) {
+                const initialSubTotal = parseInt(document.getElementById(id).innerText);
+                const finalSubTotal = initialSubTotal + whichClass;
+                return finalSubTotal;
+            } else {
+                sign === negative;
+                const initialSubTotal = parseInt(document.getElementById(id).innerText);
+                const finalSubTotal = initialSubTotal - whichClass;
+                return finalSubTotal;
+            }
+        }
+
+
+        //vat calculation function
+        function vatCalculator(id, finalSubTotal) {
+            const finalVat = (finalSubTotal / 100) * 10;
+            return finalVat;
+        }
+
+
+        //grand total calculation
+        function grandTotal(id, finalSubTotal, finalVat) {
+            const total = finalSubTotal + finalVat;
+            document.getElementById(id).innerText = total;
+        }
     </script>
 </body>
 
