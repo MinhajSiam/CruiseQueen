@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruise Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+
+        <div class="booking-content">
+            <h1>Cruise Queen</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book./p>
+        </div>
+
+
+        <div class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                    <input id="first-class-input" class="inp-style inp-width" type="number" name="" value="0">
+                </div>
+                <div class="plus-minus-btn">
+                    <p><span id="first-class-positive">+</span> <span id="first-class-negative">-</span></p>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy ($100)</label>
+                    <input id="economy-class-input" class="inp-style inp-width" type="number" name="" value="0">
+                </div>
+                <div class="plus-minus-btn">
+                    <p> <span id="economy-class-positive">+</span> <span id="economy-class-negative">-</span> </p>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p>$<span id="subTotal">0</span></p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p>$<span id="vat">0</span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p>$<span id="grandTotal">0</span></p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style">Book Now</button>
+        </div>
+    </main>
+
+    <!--Thank You-->
+    <script>
+        //First class booking area
+        //event handler for positive button in first class
+        document.getElementById('first-class-positive').addEventListener('click', function(){
+            const FirstClassInitialValue = parseFloat(document.getElementById('first-class-input').value);
+            const finalTicketAmount = FirstClassInitialValue + 1;
+            document.getElementById('first-class-input').value = finalTicketAmount;
+            //counter ended
+            //subtotal area
+            const initialSubTotal = parseInt(document.getElementById('subTotal').innerText);
+            const finalSubTotal = initialSubTotal + 150;
+            document.getElementById('subTotal').innerText = finalSubTotal;
+            //vat area
+            const finalVat = (finalSubTotal / 100) * 10;
+            document.getElementById('vat').innerText = finalVat;
+            //grand total area
+            document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+
+        })
+        //event handler for first class negative button
+        document.getElementById('first-class-negative').addEventListener('click', function(){
+            const FirstClassInitialValue = parseFloat(document.getElementById('first-class-input').value);
+            const finalTicketAmount = FirstClassInitialValue - 1;
+            document.getElementById('first-class-input').value = finalTicketAmount;
+            //counter ended
+            //subtotal area
+            const initialSubTotal = parseInt(document.getElementById('subTotal').innerText);
+            const finalSubTotal = initialSubTotal - 150;
+            document.getElementById('subTotal').innerText = finalSubTotal;
+            //vat area
+            const finalVat = (finalSubTotal / 100) * 10;
+            document.getElementById('vat').innerText = finalVat;
+            //grand total area
+            document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+        })
+
+        //Economy class booking area
+        //event handler for economy class positive button
+        document.getElementById('economy-class-positive').addEventListener('click', function(){
+            const economyClassInitialValue = parseFloat(document.getElementById('economy-class-input').value);
+            const finalTicketAmount = economyClassInitialValue + 1;
+            document.getElementById('economy-class-input').value = finalTicketAmount;
+            //counter ended
+            //subtotal area
+            const initialSubTotal = parseInt(document.getElementById('subTotal').innerText);
+            const finalSubTotal = initialSubTotal + 100;
+            document.getElementById('subTotal').innerText = finalSubTotal;
+            //vat area
+            const finalVat = (finalSubTotal / 100) * 10;
+            document.getElementById('vat').innerText = finalVat;
+            //grand total area
+            document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+        })
+        //event handler for economy class negative button
+        document.getElementById('economy-class-negative').addEventListener('click', function(){
+            const economyClassInitialValue = parseFloat(document.getElementById('economy-class-input').value);
+            const finalTicketAmount = economyClassInitialValue - 1;
+            document.getElementById('economy-class-input').value = finalTicketAmount;
+            //counter ended
+            //subtotal area
+            const initialSubTotal = parseInt(document.getElementById('subTotal').innerText);
+            const finalSubTotal = initialSubTotal - 100;
+            document.getElementById('subTotal').innerText = finalSubTotal;
+            //vat area
+            const finalVat = (finalSubTotal / 100) * 10;
+            document.getElementById('vat').innerText = finalVat;
+            //grand total area
+            document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
+        })
+
+        //This area contains all functions
+
+    </script>
+</body>
+
+</html>
