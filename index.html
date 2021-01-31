@@ -207,13 +207,11 @@
         //This area contains all functions
         //counter function
         function ticketCounter(id, sign) {
-            const firstClassInitialValue = parseInt(document.getElementById(id).value);
-            const finalTicketAmount = firstClassInitialValue + sign;
-            return finalTicketAmount;
+            const initialValue = parseInt(document.getElementById(id).value);
+            const tickets = initialValue + sign;
+            return tickets;
         }
-        //testing area
         
-
 
         //subtotal function
         function subTotalCalculator(id, whichClass, sign) {
