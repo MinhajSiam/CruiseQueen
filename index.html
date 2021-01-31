@@ -111,7 +111,7 @@
                 Now</button>
         </div>
 
-        <!-- Modal -->
+        <!-- Modal for Book Now button-->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -184,7 +184,6 @@
             document.getElementById('subTotal').innerText = finalSubTotal;
             const finalVat = vatCalculator('vat', finalSubTotal);
             document.getElementById('vat').innerText = finalVat;
-            // document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
             grandTotal('grandTotal', finalSubTotal, finalVat);
 
         })
@@ -196,7 +195,6 @@
             document.getElementById('subTotal').innerText = finalSubTotal;
             const finalVat = vatCalculator('vat', finalSubTotal);
             document.getElementById('vat').innerText = finalVat;
-            // document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
             grandTotal('grandTotal', finalSubTotal, finalVat);
         })
 
@@ -209,7 +207,6 @@
             document.getElementById('subTotal').innerText = finalSubTotal;
             const finalVat = vatCalculator('vat', finalSubTotal);
             document.getElementById('vat').innerText = finalVat;
-            // document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
             grandTotal('grandTotal', finalSubTotal, finalVat);
         })
         //event handler for economy class negative button
@@ -220,7 +217,6 @@
             document.getElementById('subTotal').innerText = finalSubTotal;
             const finalVat = vatCalculator('vat', finalSubTotal);
             document.getElementById('vat').innerText = finalVat;
-            // document.getElementById('grandTotal').innerText = finalSubTotal + finalVat;
             grandTotal('grandTotal', finalSubTotal, finalVat);
         })
 
@@ -231,10 +227,6 @@
             const finalTicketAmount = FirstClassInitialValue + sign;
             return finalTicketAmount;
         }
-
-
-        //alert for Book Now button
-
 
 
         //subtotal function
