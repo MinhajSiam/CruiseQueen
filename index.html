@@ -11,6 +11,9 @@
         rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
@@ -31,7 +34,9 @@
 
         <div class="booking-content">
             <h1>Cruise Queen</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book./p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book./p>
         </div>
 
 
@@ -48,7 +53,7 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -64,7 +69,7 @@
                     <p><span id="first-class-positive">+</span> <span id="first-class-negative">-</span></p>
                 </div>
             </div>
-            
+
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
@@ -102,8 +107,65 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book-now" class="btn-style" data-toggle="modal" data-target="#exampleModalCenter">Book
+                Now</button>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalCenterTitle">Congratulations!</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You Bought Cruise Queen Ticket's </p>
+                        <div class="amount">
+                            <div class="left">
+                                <p>First Class</p>
+                            </div>
+                            <div class="right">
+                                <p>$<span id="">0</span></p>
+                            </div>
+                        </div>
+                        <div class="amount">
+                            <div class="left">
+                                <p>Economy Class</p>
+                            </div>
+                            <div class="right">
+                                <p>$<span id="">0</span></p>
+                            </div>
+                        </div>
+                        <div class="amount">
+                            <div class="left">
+                                <h5>Total</h5>
+                            </div>
+                            <div class="right">
+                                <p>$<span id="">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+            </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     </main>
 
     <!--Thank You-->
@@ -115,7 +177,7 @@
         const economyClass = 100;
         //First class booking area
         //event handler for positive button in first class
-        document.getElementById('first-class-positive').addEventListener('click', function(){
+        document.getElementById('first-class-positive').addEventListener('click', function () {
             const finalTicketAmount = ticketCounter('first-class-input', positive);
             document.getElementById('first-class-input').value = finalTicketAmount;
             const finalSubTotal = subTotalCalculator('subTotal', firstClass, positive);
@@ -127,7 +189,7 @@
 
         })
         //event handler for first class negative button
-        document.getElementById('first-class-negative').addEventListener('click', function(){
+        document.getElementById('first-class-negative').addEventListener('click', function () {
             const finalTicketAmount = ticketCounter('first-class-input', negative);
             document.getElementById('first-class-input').value = finalTicketAmount;
             const finalSubTotal = subTotalCalculator('subTotal', firstClass, negative);
@@ -140,7 +202,7 @@
 
         //Economy class booking area
         //event handler for economy class positive button
-        document.getElementById('economy-class-positive').addEventListener('click', function(){
+        document.getElementById('economy-class-positive').addEventListener('click', function () {
             const finalTicketAmount = ticketCounter('economy-class-input', positive)
             document.getElementById('economy-class-input').value = finalTicketAmount;
             const finalSubTotal = subTotalCalculator('subTotal', economyClass, positive);
@@ -151,7 +213,7 @@
             grandTotal('grandTotal', finalSubTotal, finalVat);
         })
         //event handler for economy class negative button
-        document.getElementById('economy-class-negative').addEventListener('click', function(){
+        document.getElementById('economy-class-negative').addEventListener('click', function () {
             const finalTicketAmount = ticketCounter('economy-class-input', negative);
             document.getElementById('economy-class-input').value = finalTicketAmount;
             const finalSubTotal = subTotalCalculator('subTotal', economyClass, negative);
@@ -169,6 +231,10 @@
             const finalTicketAmount = FirstClassInitialValue + sign;
             return finalTicketAmount;
         }
+
+
+        //alert for Book Now button
+
 
 
         //subtotal function
